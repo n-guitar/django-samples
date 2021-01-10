@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Todo
 
 def list_page(request):
@@ -9,4 +9,23 @@ def create_page(request):
     if request.method == 'POST':
         title = request.POST['title']
         memo = request.POST['memo']
-    return render(request,'create.html')
+        Todo.objects.create(title=title, memo=memo)
+        return redirect('list')
+    return render(request, 'create.html')
+
+def update_page(request, pk):
+    if request.method == 'POST':
+        title = request.POST['title']
+        memo = request.POST['memo']
+        Todo.objects.filter(pk=pk).update(title=title, memo=memo)
+        return redirect('list')
+    object = Todo.objects.get(pk=pk)
+    return render(request, 'update.html', {'object':object})
+
+def delete_page(request, pk):
+    if request.method == 'POST':
+        object = Todo.objects.get(pk=pk)
+        object.delete()
+        return redirect('list')
+    object = Todo.objects.get(pk=pk)
+    return render(request, 'delete.html', {'object':object})
