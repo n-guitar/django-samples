@@ -1,10 +1,35 @@
-<h1>list Page</h1>
+{% extends 'base.html' %}
+{% block Content %}
+<div class="bg-light p-3 p-sm-5 mb-4 border-top">
+    <div class="container">
+      <h1 class="display-4">List Page</h1>
+      <hr class="my-4">
+      <p>djangoでいっぱい遊びましょう</p>
+      <a class="btn btn-primary btn-lg" href="{% url 'create' %}" role="button">ToDoを作成する</a>
+    </div>
+</div>
 <ul>
-    {% for item in object_list %}
-        <li>
-            {{ item.title }}: {{ item.memo }}
-            <a href="{% url 'update' item.pk %}">編集する</a>
-            <a href="{% url 'delete' item.pk %}">削除する</a>
-        </li>
-    {% endfor %}
-</ul>
+    <div class="container">
+        <table class="table caption-top">
+            <caption>Todo List</caption>
+            <thead>
+                <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Memo</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in object_list %}
+                <tr>
+                <td>{{ item.title }}</td>
+                <td>{{ item.memo }}</td>
+                <td><a class="btn btn-secondary btn-sm" href="{% url 'update' item.pk %}">編集する</a></td>
+                <td><a class="btn btn-danger btn-sm" href="{% url 'delete' item.pk %}">削除する</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock Content %}

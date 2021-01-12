@@ -1,6 +1,23 @@
-<h1>Update Page</h1>
-
+{% extends 'base.html' %}
+{% block Content %}
+<div class="container">
 <form action="" method="POST"> {% csrf_token %}
-    {{ form.as_p}}
-    <input type="submit" value="更新する">
+    <legend>Todoを更新</legend>
+    <div class="mb-3">
+        <label class="form-label" for="{{ form.title.id_for_label }}">{{ form.title.label }}</label>
+        <input class="form-control" type="text" name="{{ form.title.html_name }}" value="{{ form.title.value }}" maxlength="100" required="" id="{{ form.title.id_for_label }}">
+        {% for error in form.title.errors %}
+            {{error}}
+        {% endfor %}
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="{{ form.memo.id_for_label }}">{{ form.memo.label }}</label>
+        <textarea class="form-control" name="{{ form.memo.html_name }}" cols="40" rows="10" maxlength="255" required="" id="{{ form.memo.id_for_label }}">{{ form.memo.value }}</textarea>
+        {% for error in form.memo.errors %}
+            {{error}}
+        {% endfor %}
+    </div>
+    <input class="btn btn-primary" type="submit" value="更新する">
 </form>
+</div>
+{% endblock Content %}
