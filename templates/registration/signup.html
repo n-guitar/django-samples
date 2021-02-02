@@ -1,0 +1,14 @@
+{% extends 'base_global.html' %}
+
+
+{% block BodyContent %}
+
+<div class="position-relative">
+  <div class="position-absolute top-50 start-50 translate-middle">
+  <form class="text-center" action="" method="POST"> {% csrf_token %}
+      {{ form.as_p }}
+    <input type="submit" value="signup">
+  </form>
+</div>
+</div>
+{% endblock BodyContent %}
