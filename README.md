@@ -29,3 +29,10 @@ $ django-admin startproject confug .
 $ django-admin startapp samplecrud
 $ mkdir templates
 ```
+
+# and more...
+```bash
+$ python manage.py makemigrations
+$ python manage.py migrate
+$ python manage.py createsuperuser 
+```
