@@ -1,0 +1,36 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+    {% block HeadContent %}
+    {% endblock HeadContent %}
+
+    <title>
+        {% block TitleContent %}
+        sample app
+        {% endblock TitleContent %}
+    </title>
+</head>
+
+<header>
+{% block HeaderContent %}
+{% endblock HeaderContent %}
+</header>
+
+<body>
+{% block BodyContent %}
+{% endblock BodyContent %}
+</body>
+
+<footer>
+{% block FooterContent %}
+{% endblock FooterContent %}
+</footer>
+
+</html>
