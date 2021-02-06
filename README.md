@@ -34,5 +34,16 @@ $ mkdir templates
 ```bash
 $ python manage.py makemigrations
 $ python manage.py migrate
-$ python manage.py createsuperuser 
+$ python manage.py createsuperuser
+```
+
+# docker
+```bash
+$ docker build -t sample-generic-view/haku-mai:1.0 .
+
+$ docker images sample-generic-view/haku-mai
+REPOSITORY                     TAG       IMAGE ID       CREATED              SIZE
+sample-generic-view/haku-mai   1.0       25b082550343   About a minute ago   77.4MB
+
+$ docker run --rm -p 8000:8000 --name haku-mai-sample sample-generic-view/haku-mai:1.0
 ```
